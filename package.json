@@ -1,0 +1,22 @@
+{
+  "name": "instadish",
+  "version": "1.0.0",
+  "description": "Food order app",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mharoon2595/InstaDish.git"
+  },
+  "author": "Mohammed Haroon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mharoon2595/InstaDish/issues"
+  },
+  "homepage": "https://github.com/mharoon2595/InstaDish#readme",
+  "devDependencies": {
+    "parcel": "^2.12.0"
+  }
+}
