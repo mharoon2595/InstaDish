@@ -4,7 +4,6 @@ import Shimmer from "./Shimmer";
 import Search from "./Search";
 
 const Body = () => {
-  // Local State Variable - Super powerful variable
   const [listOfRestaurants, setListOfRestaurant] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
