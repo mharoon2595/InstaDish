@@ -2,6 +2,8 @@ import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import Search from "./Search";
+import ScrollToBottomDetector from "./ScrollDetector";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurant] = useState([]);
@@ -13,6 +15,10 @@ const Body = () => {
   useEffect(() => {
     fetchAPI();
   }, []);
+
+  const handleScrollToBottom = async () => {
+    const response = await fetch("");
+  };
 
   const fetchAPI = async () => {
     const res = await fetch(
@@ -59,14 +65,26 @@ const Body = () => {
         />
         {searchText === "" ? (
           <div className="res-container">
+            {/* <ScrollToBottomDetector onScrollToBottom={handleScrollToBottom} /> */}
             {listOfRestaurants.map((restaurant) => (
-              <RestaurantCard key={restaurant.info.id} resData={restaurant} />
+              <Link
+                key={restaurant.info.id}
+                to={"/restaurant/" + restaurant.info.id}
+              >
+                <RestaurantCard key={restaurant.info.id} resData={restaurant} />
+              </Link>
             ))}
           </div>
         ) : (
           <div className="res-container">
+            {/* <ScrollToBottomDetector onScrollToBottom={handleScrollToBottom} /> */}
             {filteredRestaurants.map((restaurant) => (
-              <RestaurantCard key={restaurant.info.id} resData={restaurant} />
+              <Link
+                key={restaurant.info.id}
+                to={"/restaurant/" + restaurant.info.id}
+              >
+                <RestaurantCard resData={restaurant} />
+              </Link>
             ))}
           </div>
         )}

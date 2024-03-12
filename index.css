@@ -4,6 +4,11 @@ body{
     font-family: 'Lato', serif;
 }
 
+a{
+    text-decoration: none; /* Removes underlining */
+    color: inherit; /* Keeps the default text color */
+}
+
 .header {
     display: flex;
     justify-content: space-between;
@@ -75,4 +80,9 @@ body{
     display: flex;
     gap:1rem;
     margin: 10px;
+}
+
+.menu-container{
+    margin:5px;
+    padding: 5px;
 }
