@@ -1,30 +1,15 @@
-import React, { useEffect, useState } from "react";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 import { useParams } from "react-router-dom";
 import ResFood from "./ResFood";
 
 const ResDetails = () => {
-  const [resName, setResName] = useState("");
-  const [resDetails, setResDetails] = useState([]);
   const params = useParams();
 
-  useEffect(() => {
-    fetchAPI();
-  }, []);
+  const { id } = params;
+  const resMenu = useRestaurantMenu(id);
+  const { resName, resDetails } = resMenu;
 
-  async function fetchAPI() {
-    let res = await fetch(
-      `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=9.9312328&lng=76.26730409999999&restaurantId=${params.id}`
-    );
-    let resJ = await res.json();
-    console.log(resJ);
-    setResName(resJ?.data?.cards[0]?.card?.card?.info?.name);
-    setResDetails(
-      resJ?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
-        ?.card?.itemCards
-    );
-  }
-
-  // useEffect();
+  console.log("from hooook---->", resMenu);
   console.log("restaurant name--->", resName);
   console.log("restaurant details--->", resDetails);
   return (
@@ -32,7 +17,7 @@ const ResDetails = () => {
       <h1>{resName}</h1>
       <div>
         {resDetails.map((items) => (
-          <ResFood id={items.card.info.id} menu={items.card.info} />
+          <ResFood id={items?.card?.info?.id} menu={items?.card?.info} />
         ))}
       </div>
     </div>
